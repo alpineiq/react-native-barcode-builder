@@ -137,6 +137,9 @@ const Barcode = ({
     //  data: '110100100001....'
     // }
     const encoded = encoder.encode();
+    if(format === "EAN13"){
+      return encoded.reduce((p, n) => ({ data: `${p.data}${n.data || ''}`, text: `${p.text}${n.text || ''}` }), { data: '', text: ''});
+    }
     return encoded;
   };
 
