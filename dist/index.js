@@ -184,6 +184,9 @@ var Barcode = function Barcode(_ref) {
 
 
     var encoded = encoder.encode();
+    if(format === "EAN13"){
+      return encoded.reduce((p, n) => ({ data: `${p.data}${n.data || ''}`, text: `${p.text}${n.text || ''}` }), { data: '', text: ''});
+    }
     return encoded;
   };
 
